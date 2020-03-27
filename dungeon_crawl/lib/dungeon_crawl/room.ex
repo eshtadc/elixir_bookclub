@@ -4,7 +4,7 @@ defmodule DungeonCrawl.Room do
 
   import DungeonCrawl.Room.Action
 
-  defstruct description: nil, actions: [], trigger: nil
+  defstruct description: nil, actions: [], trigger: nil, weight: 50
 
   def all, do: [
     # %Room{
@@ -14,12 +14,14 @@ defmodule DungeonCrawl.Room do
     %Room{
       description: "You can see the light of day. You found the exit!",
       actions: [forward()],
-      trigger: Triggers.Exit
+      trigger: Triggers.Exit,
+      weight: 10
     },
     %Room{
       description: "You can see an enemy blocking your path.",
       actions: [forward()],
-      trigger: Triggers.Enemy
+      trigger: Triggers.Enemy,
+      weight: 80
     },
   ]
 end

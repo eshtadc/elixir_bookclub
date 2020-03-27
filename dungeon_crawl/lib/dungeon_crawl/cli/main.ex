@@ -1,5 +1,6 @@
 defmodule DungeonCrawl.CLI.Main do
   alias Mix.Shell.IO, as: Shell
+  alias DungeonCrawl.Random
 
   def start_game do
     welcome_message()
@@ -44,7 +45,7 @@ defmodule DungeonCrawl.CLI.Main do
     Shell.info(DungeonCrawl.Character.current_stats(character))
 
     rooms
-    |> Enum.random
+    |> Random.weighted
     |> DungeonCrawl.CLI.RoomActionsChoice.start
     |> trigger_action(character)
     |> handle_action_result
